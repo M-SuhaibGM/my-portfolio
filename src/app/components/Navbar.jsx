@@ -4,33 +4,60 @@ import React, { useState } from "react";
 import NavLink from "./NavLink";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import MenuOverlay from "./MenuOverlay";
+import { useEffect } from 'react'
 
 const navLinks = [
   {
     title: "About",
-    path: "#about",
+    path: "/about",
   },
   {
     title: "Projects",
-    path: "#projects",
+    path: "/project",
   },
   {
     title: "Contact",
-    path: "#contact",
+    path: "/contect",
   },
 ];
 
 const Navbar = () => {
+  const [isScrolling, setIsScrolling] = useState(true); // Set default value to true
+  const [lastScrollY, setLastScrollY] = useState(0);
+  
+  const handleScroll = () => {
+    const currentScrollY = window.scrollY;
+    if (currentScrollY > lastScrollY) {
+      // Scrolling down
+      setIsScrolling(false);
+    } else {
+      // Scrolling up
+      setIsScrolling(true);
+    }
+    setLastScrollY(currentScrollY);
+  };
+  
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    // Cleanup on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [lastScrollY]);
+  
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
-    <nav className="fixed mx-auto w-[80vw] rounded-[40px] mt-[20px] border border-[#33353F] top-0 left-0 right-0 z-10 bg-gradient-to-l from-violet-800 to-cyan-600 bg-opacity-100">
+    <nav style={{
+      transition: 'transform 0.3s ease',
+      transform: isScrolling ? 'translateY(0)' : 'translateY(-200%)',
+    }} className="fixed mx-auto w-[80vw] rounded-[40px] mt-[20px] border border-[#33353F] top-0 left-0 right-0 z-10 bg-gradient-to-l from-violet-800 to-cyan-600 bg-opacity-100">
       <div className="flex container lg:py-4 flex-wrap items-center justify-between mx-auto px-4 py-2">
         <Link
           href={"/"}
-          className="text-2xl md:text-3xl text-white font-semibold"
+          
         >
-        M SUHIAB
+          <img src="images/LOGO.png" className="w-[60px]  rounded-full"/>
         </Link>
         <div className="mobile-menu block md:hidden">
           {!navbarOpen ? (

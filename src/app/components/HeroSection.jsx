@@ -13,15 +13,15 @@ const HeroSection = () => {
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-          className="col-span-8 place-self-center text-center sm:text-left justify-self-center"
+          className="col-span-8 place-self-center text-center sm:text-left justify-self-center lg:w-[600px] md:w-[500px] sm:w-[350px]"
         >
-          <h1 className="text-white mb-4 text-4xl sm:text-5xl lg:text-8xl lg:leading-normal font-extrabold">
+          <h1 className="text-white mb-4 text-2xl sm:text-5xl lg:text-7xl lg:leading-normal font-extrabold">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-200 to-blue-900">
               Hello, I&apos;m{" "}
             </span>
             <br></br>
             <TypeAnimation
-            className="text-blue-300"
+              className="text-blue-300"
               sequence={[
                 "M SUHIAB",
                 1000,
@@ -34,15 +34,11 @@ const HeroSection = () => {
               repeat={Infinity}
             />
           </h1>
-         
-          <div>
-            
+
+          <div className="cursor-pointer">
             <Link
-              href="/#contact"
-              className="px-8   py-2 w-full sm:w-auto text-center border border-slate-200px rounded-full bg-gradient-to-r from-blue-200 to-blue-900 hover:bg-slate-800 text-white mt-3"
-            >
-                 HIRE ME
-             
+              href="/contect">
+                <button className="px-8   py-2   sm:w-[300px] lg:w-[200px] text-center border cursor-pointer border-slate-200px rounded-full bg-gradient-to-r from-blue-200 to-blue-900 hover:bg-slate-300 text-white mt-3"> HIRE ME</button>
             </Link>
           </div>
         </motion.div>
