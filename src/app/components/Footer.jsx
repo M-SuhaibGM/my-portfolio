@@ -40,9 +40,15 @@ const Footer = () => {
           </div>
           <div className="w-full lg:w-1/2 xl:w-1/3 px-4 mb-8 lg:mb-0">
             <h5 className="text-xl font-bold mb-4">Contact</h5>
+
             <p className="text-white">
-              Email: <a href="mailto:your-email@example.com">mmsohaib617@gmail.com</a>
+              Email: <a href="mailto:mmsohaib@email@example.com">mmsohaib617@gmail.com</a>
             </p>
+            <div className=" flex flex-row    gap-2">
+
+              <img className='h-6 ' src="https://img.icons8.com/ios-filled/50/00F600/whatsapp.png" />
+               <p>0319-4776162</p>
+            </div>
           </div>
         </div>
       </div>

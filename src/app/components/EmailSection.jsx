@@ -7,35 +7,36 @@ import Image from "next/image";
 
 const EmailSection = () => {
   const [emailSubmitted, setEmailSubmitted] = useState(false);
+  const [formData, setFormData] = useState({
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const data = {
-      email: e.target.email.value,
-      subject: e.target.subject.value,
-      message: e.target.message.value,
-    };
-    const JSONdata = JSON.stringify(data);
+    const JSONdata = JSON.stringify(formData);
     const endpoint = "/api/send";
 
-    // Form the request for sending data to the server.
     const options = {
-      // The method is POST because we are sending data.
       method: "POST",
-      // Tell the server we're sending JSON.
       headers: {
         "Content-Type": "application/json",
       },
-      // Body of the request is the JSON data we created above.
       body: JSONdata,
     };
 
     const response = await fetch(endpoint, options);
-    const resData = await response.json();
 
     if (response.status === 200) {
       console.log("Message sent.");
       setEmailSubmitted(true);
+      // Clear the form
+      setFormData({  subject: "", message: "" });
     }
   };
 
@@ -50,7 +51,6 @@ const EmailSection = () => {
           Let&apos;s Connect
         </h5>
         <p className="text-[#ADB7BE] mb-4 max-w-md">
-          {" "}
           I&apos;m currently looking for new opportunities, my inbox is always
           open. Whether you have a question or just want to say hi, I&apos;ll
           try my best to get back to you!
@@ -59,7 +59,10 @@ const EmailSection = () => {
           <Link target="_blank" href="https://github.com/M-SuhaibGM">
             <Image src={GithubIcon} alt="Github Icon" />
           </Link>
-          <Link target="_blank" href="https://www.linkedin.com/in/muhammad-suhaib-811452326/">
+          <Link
+            target="_blank"
+            href="https://www.linkedin.com/in/muhammad-suhaib-811452326/"
+          >
             <Image src={LinkedinIcon} alt="Linkedin Icon" />
           </Link>
         </div>
@@ -71,22 +74,7 @@ const EmailSection = () => {
           </p>
         ) : (
           <form className="flex flex-col" onSubmit={handleSubmit}>
-            <div className="mb-6">
-              <label
-                htmlFor="email"
-                className="text-white block mb-2 text-sm font-medium"
-              >
-                Your email
-              </label>
-              <input
-                name="email"
-                type="email"
-                id="email"
-                required
-                className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
-                placeholder="example@google.com"
-              />
-            </div>
+           
             <div className="mb-6">
               <label
                 htmlFor="subject"
@@ -99,6 +87,8 @@ const EmailSection = () => {
                 type="text"
                 id="subject"
                 required
+                value={formData.subject}
+                onChange={handleChange}
                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
                 placeholder="Just saying hi"
               />
@@ -113,6 +103,9 @@ const EmailSection = () => {
               <textarea
                 name="message"
                 id="message"
+                required
+                value={formData.message}
+                onChange={handleChange}
                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
                 placeholder="Let's talk about..."
               />
