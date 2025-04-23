@@ -5,8 +5,8 @@ import Image from "next/image";
 
 const ProjectCard = ({ imgUrl, title, description, gitUrl,previewUrl }) => {
   return (
-    <div  >
-      <div
+    <div className="cursor-pointer" >
+      <div 
       onClick={() => window.open(previewUrl, "_blank")}
         className="h-52 md:h-72 rounded-t-xl relative group "
         style={{ background: `url(${imgUrl})`, backgroundSize: "cover"  , backgroundRepeat:"no-repeat" }}

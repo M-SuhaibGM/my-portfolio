@@ -6,6 +6,31 @@ import { motion, useInView } from "framer-motion";
 
 const projectsData = [
   {
+    id: 6,
+    title: " messanger ",
+    description: "Next-auth Authentication , mysql, shadcn ,Next.js ,prsima , react,TypeScript, Tailwind",
+    image: "/images/projects/messanger.png",
+    tag: ["All", "Web"],
+    gitUrl: "https://github.com/M-SuhaibGM/Messenger.git",
+    previewUrl: "https://messenger-smoky-three.vercel.app/",
+  }, {
+    id: 4,
+    title: "Trello",
+    description: "mysql ,Nextjs , react, javascript , TypeScript, Tailwind ,clerk, shadcn ,Unsplash",
+    image: "/images/projects/trelo.png",
+    tag: ["All", "Mobile"],
+    gitUrl: "https://github.com/M-SuhaibGM/Taskify.git",
+    previewUrl: "https://taskify-lyart-psi.vercel.app/",
+  }, {
+    id: 22,
+    title: "Udemy",
+    description: "mysql ,Nextjs , react, javascript , TypeScript, Tailwind ,clerk, shadcn ,stripe",
+    image: "/images/projects/lms.png",
+    tag: ["All", "Mobile"],
+    gitUrl: "https://github.com/M-SuhaibGM/lms.git",
+    previewUrl: "https://lms-seven-sand.vercel.app/",
+  },
+  {
     id: 1,
     title: "blog Website",
     description: "react mysql css express  authantication javascript ",
@@ -30,17 +55,9 @@ const projectsData = [
     image: "/images/projects/weather.png",
     tag: ["All", "Web"],
     gitUrl: "https://github.com/M-SuhaibGM/weather-app.git",
-    previewUrl: "/",
+    previewUrl: "https://weather-app-nu-tan-11.vercel.app/",
   },
-  {
-    id: 4,
-    title: "Todo-list Application",
-    description: "mysql node.js express react CRUD operations  ",
-    image: "/images/projects/todolist.png",
-    tag: ["All", "Mobile"],
-    gitUrl: "https://github.com/M-SuhaibGM/todo-list.git",
-    previewUrl: "/",
-  },
+ 
   {
     id: 5,
     title: "facebook clone ",
@@ -50,15 +67,7 @@ const projectsData = [
     gitUrl: "https://github.com/M-SuhaibGM/facebook-clone.git",
     previewUrl: "/",
   },
-  {
-    id: 6,
-    title: " messanger clone",
-    description: "Authentication and CRUD operations mysql shadcn prsima  react CRUD operations",
-    image: "/images/projects/messanger.png",
-    tag: ["All", "Web"],
-    gitUrl: "https://github.com/M-SuhaibGM/messanger-clone.git",
-    previewUrl: "/",
-  },
+
   {
     id: 7,
     title: "Dise game",
@@ -110,7 +119,7 @@ const ProjectsSection = () => {
       <h2 className="text-center text-4xl font-bold text-white mt-4 mb-8 md:mb-12">
         My Projects
       </h2>
-    
+
       <ul ref={ref} className="grid md:grid-cols-3 gap-8 md:gap-12">
         {filteredProjects.map((project, index) => (
           <motion.li

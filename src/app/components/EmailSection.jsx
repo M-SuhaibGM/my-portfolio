@@ -11,6 +11,7 @@ const EmailSection = () => {
     subject: "",
     message: "",
   });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -19,24 +20,31 @@ const EmailSection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const JSONdata = JSON.stringify(formData);
-    const endpoint = "/api/send";
+    setLoading(true);
+    
+    try {
+      const JSONdata = JSON.stringify(formData);
+      const endpoint = "/api/send";
 
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSONdata,
-    };
+      const response = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSONdata,
+      });
 
-    const response = await fetch(endpoint, options);
-
-    if (response.status === 200) {
-      console.log("Message sent.");
-      setEmailSubmitted(true);
-      // Clear the form
-      setFormData({  subject: "", message: "" });
+      if (response.ok) {
+        console.log("Message sent.");
+        setEmailSubmitted(true);
+        setFormData({ subject: "", message: "" });
+      } else {
+        console.error("Failed to send message");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -57,13 +65,13 @@ const EmailSection = () => {
         </p>
         <div className="socials flex flex-row gap-2">
           <Link target="_blank" href="https://github.com/M-SuhaibGM">
-            <Image src={GithubIcon} alt="Github Icon" />
+            <Image src={GithubIcon} alt="Github Icon" width={24} height={24} />
           </Link>
           <Link
             target="_blank"
             href="https://www.linkedin.com/in/muhammad-suhaib-811452326/"
           >
-            <Image src={LinkedinIcon} alt="Linkedin Icon" />
+            <Image src={LinkedinIcon} alt="Linkedin Icon" width={24} height={24} />
           </Link>
         </div>
       </div>
@@ -74,7 +82,6 @@ const EmailSection = () => {
           </p>
         ) : (
           <form className="flex flex-col" onSubmit={handleSubmit}>
-           
             <div className="mb-6">
               <label
                 htmlFor="subject"
@@ -91,6 +98,7 @@ const EmailSection = () => {
                 onChange={handleChange}
                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
                 placeholder="Just saying hi"
+                disabled={loading}
               />
             </div>
             <div className="mb-6">
@@ -108,13 +116,27 @@ const EmailSection = () => {
                 onChange={handleChange}
                 className="bg-[#18191E] border border-[#33353F] placeholder-[#9CA2A9] text-gray-100 text-sm rounded-lg block w-full p-2.5"
                 placeholder="Let's talk about..."
+                disabled={loading}
               />
             </div>
             <button
               type="submit"
-              className="bg-blue-500 hover:bg-blue-800 text-white font-medium py-2.5 px-5 rounded-lg w-full"
+              disabled={loading}
+              className={`bg-blue-500 text-white font-medium py-2.5 px-5 rounded-lg w-full ${
+                loading ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-800"
+              }`}
             >
-              Send Message
+              {loading ? (
+                <span className="flex items-center justify-center">
+                  <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                  </svg>
+                  Sending...
+                </span>
+              ) : (
+                "Send Message"
+              )}
             </button>
           </form>
         )}
