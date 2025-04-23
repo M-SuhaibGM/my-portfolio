@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require("tailwindcss/colors");
+
 module.exports = {
   content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -16,8 +17,16 @@ module.exports = {
     },
     colors: {
       ...colors,
-      primary: colors.purple,
-      secondary: colors.pink,
+      // Using the updated color names
+      primary: colors.violet,  // Replaces purple (which is now violet in v3)
+      secondary: colors.fuchsia,  // Replaces pink (more vibrant alternative)
+      
+      // Explicitly include the renamed colors if you need them
+      sky: colors.sky,        // Replaces lightBlue
+      stone: colors.stone,    // Replaces warmGray
+      neutral: colors.neutral, // Replaces trueGray
+      gray: colors.gray,      // Replaces coolGray
+      slate: colors.slate,    // Replaces blueGray
     },
   },
   plugins: [],

@@ -43,7 +43,7 @@ const Navbar = () => {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [lastScrollY]);
+  }, [lastScrollY,handleScroll]);
   
   const [navbarOpen, setNavbarOpen] = useState(false);
 
@@ -57,7 +57,7 @@ const Navbar = () => {
           href={"/"}
           
         >
-          <img src="images/LOGO.png" className="w-[60px]  rounded-full"/>
+          <img src="images/LOGO.png" alt="logo" className="w-[60px]  rounded-full"/>
         </Link>
         <div className="mobile-menu block md:hidden">
           {!navbarOpen ? (
