@@ -37,11 +37,11 @@ const HeroSection = () => {
 
           <div className="cursor-pointer">
             <Link
-              href="#contect">
+              href="#contact">
               <button className="px-8   py-2   sm:w-[300px] lg:w-[200px] text-center border cursor-pointer border-slate-200px rounded-full bg-gradient-to-r from-blue-200 to-blue-900 hover:bg-slate-300 text-white mt-3"> HIRE ME</button> </Link>
             <a
               href="fbg.jpg"
-              download="fbg.jpg"
+              download="resume.jpg"
               target="_blank"
               rel="noopener noreferrer"
             >
