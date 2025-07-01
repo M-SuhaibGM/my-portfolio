@@ -7,8 +7,8 @@ import Link from "next/link";
 
 const HeroSection = () => {
   return (
-    <section className="lg:py-16" >
-      <div className="grid grid-cols-1 sm:grid-cols-12">
+    <section className="lg:py-16  " >
+      <div className="grid grid-cols-1 sm:grid-cols-12  mt-24">
         <motion.div
           initial={{ opacity: 0, scale: 0.5 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -35,17 +35,17 @@ const HeroSection = () => {
             />
           </h1>
 
-          <div className="cursor-pointer">
+          <div className="cursor-pointer ">
             <Link
               href="#contact">
-              <button className="px-8   py-2   sm:w-[300px] lg:w-[200px] text-center border cursor-pointer border-slate-200px rounded-full bg-gradient-to-r from-blue-200 to-blue-900 hover:bg-slate-300 text-white mt-3"> HIRE ME</button> </Link>
+              <button className="py-2   w-[150px] text-center border  cursor-pointer border-slate-200px rounded-full bg-gradient-to-r from-blue-200 to-blue-900 hover:bg-slate-300 text-white mt-3"> HIRE ME</button> </Link>
             <a
               href="/Resume.pdf"
               download="Resume.pdf"
               target="_blank"
               rel="noopener noreferrer"
             >
-              <button className="py-2 ml-[20px]  sm:w-[150px] lg:w-[150px] text-center border  cursor-pointer border-slate-200px rounded-full bg-gradient-to-r from-blue-200 to-blue-900 hover:bg-slate-300 text-white mt-3">Download CV</button>
+              <button className="py-2 ml-[20px]  w-[150px] text-center border  cursor-pointer border-slate-200px rounded-full bg-gradient-to-r from-blue-200 to-blue-900 hover:bg-slate-300 text-white mt-3">Download CV</button>
             </a>
 
           </div>
@@ -56,7 +56,7 @@ const HeroSection = () => {
           transition={{ duration: 0.5 }}
           className="col-span-4 place-self-center mt-4 lg:mt-0"
         >
-          <div className=" rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[400px] lg:h-[400px] relative">
+          <div className=" rounded-full bg-[#181818] w-[250px] h-[250px] lg:w-[300px] lg:h-[300px] relative">
             <Image
               src="/images/my pic.jpg"
               alt="my image"
