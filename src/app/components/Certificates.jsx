@@ -7,9 +7,14 @@ const certs = [
   
   {
     id: 2,
-    title: 'Intership Certificates',
+    title: 'Intership Certificate',
     thumbnail: '/pic1.jpg',
     fullImage: '/pic1.jpg',
+  },{
+    id: 2,
+    title: 'Udamy Course Certificate',
+    thumbnail: '/udamy.jpg',
+    fullImage: '/udamy.jpg',
   },
 ];
 

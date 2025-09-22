@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useRef } from "react";
 import ProjectCard from "./ProjectCard";
-import ProjectTag from "./ProjectTag";
 import { motion, useInView } from "framer-motion";
 
 const projectsData = [
@@ -13,6 +12,14 @@ const projectsData = [
     tag: ["All", "Web"],
     gitUrl: "https://github.com/M-SuhaibGM/Messenger.git",
     previewUrl: "https://messenger-smoky-three.vercel.app/",
+  } {
+    id: 12,
+    title: " Canva",
+    description: "Next-auth Authentication , mongodb, shadcn ,Next.js ,prsima , react,TypeScript, Tailwind,paypal,Ai integration, Fabric js",
+    image: "/images/projects/canva.png",
+    tag: ["All", "Web"],
+    gitUrl: "https://github.com/M-SuhaibGM/canva-clone.git",
+    previewUrl: "https://canva-clone-xi-jet.vercel.app/",
   }, {
     id: 4,
     title: "Trello",
@@ -57,7 +64,7 @@ const projectsData = [
     gitUrl: "https://github.com/M-SuhaibGM/weather-app.git",
     previewUrl: "https://weather-app-nu-tan-11.vercel.app/",
   },
- 
+
   {
     id: 5,
     title: "facebook clone ",
