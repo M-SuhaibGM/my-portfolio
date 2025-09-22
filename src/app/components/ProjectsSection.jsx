@@ -12,7 +12,8 @@ const projectsData = [
     tag: ["All", "Web"],
     gitUrl: "https://github.com/M-SuhaibGM/Messenger.git",
     previewUrl: "https://messenger-smoky-three.vercel.app/",
-  } {
+  } ,
+  {
     id: 12,
     title: " Canva",
     description: "Next-auth Authentication , mongodb, shadcn ,Next.js ,prsima , react,TypeScript, Tailwind,paypal,Ai integration, Fabric js",
